@@ -86,9 +86,23 @@ const base = {
         }]
     },
     optimization: {
+        minimize: true,
         minimizer: [
             new UglifyJsPlugin({
-                include: /\.min\.js$/
+                include: /\.min\.js$/,
+                uglifyOptions: {
+                    warnings: false,
+                    parse: {},
+                    compress: true,
+                    mangle: true, // Note `mangle.properties` is `false` by default.
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                  },
+                  extractComments: false
+                
             })
         ]
     },
